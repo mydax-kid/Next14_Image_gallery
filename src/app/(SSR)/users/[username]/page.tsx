@@ -16,7 +16,8 @@ async function getUser(username: string): Promise<UnsplashUser> {
     return await response.json();
 }
 
-// const getUserCached = cache(getUser) Use cache if you're not using the native fetch
+//Use cache if you're not using the native fetch
+// const getUserCached = cache(getUser) 
 
 export async function generateMetadata({ params: { username } }: PageProps): Promise<Metadata> {
     const user = await getUser(username);
@@ -25,6 +26,7 @@ export async function generateMetadata({ params: { username } }: PageProps): Pro
         title: ([user.first_name, user.last_name].filter(Boolean).join(" ") || user.username) + " - NextJS 13.4 Image Gallery",
     }
 }
+
 
 export default async function Page({ params: { username } }: PageProps) {
     const user = await getUser(username);

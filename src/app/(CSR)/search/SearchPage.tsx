@@ -6,10 +6,12 @@ import { FormEvent, useState } from "react";
 import { Alert, Button, Form, Spinner } from "react-bootstrap";
 import styles from "./SearchPage.module.css";
 
+
 export default function SearchPage() {
     const [searchResults, setSearchResults] = useState<UnsplashImage[] | null>(null);
     const [searchResultsLoading, setSearchResultsLoading] = useState(false);
     const [searchResultsLoadingIsError, setSearchResultsLoadingIsError] = useState(false);
+
 
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -33,6 +35,7 @@ export default function SearchPage() {
         }
     }
 
+    
     return (
         <div>
             <Alert>

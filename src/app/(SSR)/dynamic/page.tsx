@@ -7,6 +7,7 @@ export const metadata = {
     title: "Dynamic Fetching - NextJS 13.4 Image Gallery",
 }
 
+//do not cache this page
 export const revalidate = 0;
 
 export default async function Page() {
@@ -20,6 +21,7 @@ export default async function Page() {
 
     const width = Math.min(500, image.width);
     const height = (width / image.width) * image.height;
+
 
     return (
         <div className="d-flex flex-column align-items-center">

@@ -6,19 +6,22 @@ import { Metadata } from "next";
 
 // export const revalidate = 0;
 
-// export const dynamicParams = false;
+//only allow static params defined in <generateStaticParams> function
+// export const dynamicParams = false; 
 
 interface PageProps {
     params: { topic: string },
     // searchParams: { [key: string]: string | string[] | undefined },
 }
 
+//non static metadata
 export function generateMetadata({ params: { topic } }: PageProps): Metadata {
     return {
         title: topic + " - NextJS 13.4 Image Gallery",
     }
 }
 
+//generate static pages at build time
 export function generateStaticParams() {
     return ["health", "fitness", "coding"].map(topic => ({ topic }));
 }
@@ -35,8 +38,7 @@ export default async function Page({ params: { topic } }: PageProps) {
             </Alert>
 
             <h1>{topic}</h1>
-            {
-                images.map(image => (
+            {images.map(image => (
                     <Image
                         src={image.urls.raw}
                         width={250}
@@ -45,8 +47,7 @@ export default async function Page({ params: { topic } }: PageProps) {
                         key={image.urls.raw}
                         className={styles.image}
                     />
-                ))
-            }
+                ))}
         </div>
     );
 }

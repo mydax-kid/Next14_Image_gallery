@@ -7,6 +7,7 @@ export const metadata = {
     title: "Incremental Static Regeneration - NextJS 13.4 Image Gallery",
 }
 
+//caches page only for 15seconds then refreshes
 export const revalidate = 15;
 
 export default async function Page() {
